@@ -1,3 +1,6 @@
+<!-- miss, kalau gabisa di klik button, kliknya pas tepat di teksnya. soalnya aku kira juga punya ku abis di css kok gabisa di klik, taunya harus klik pas di teksnya soalnya aku pake a didalam button -->
+
+
 <?php
 
 include_once "koneksi.php";
