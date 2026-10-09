@@ -54,6 +54,7 @@ $nomor = 1;
 <body>
 
     <h2>Daftar Siswa Sekolah</h2>
+     <a href="tambahSiswa.php" class="add-btn"><i class="fa fa-plus"></i> Tambah siswa</a>
 
     <table>
         <thead>
@@ -63,6 +64,7 @@ $nomor = 1;
                 <th>Nama</th>
                 <th>Kelas</th>
                 <th>Jurusan</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody id="siswaTableBody">
@@ -73,6 +75,14 @@ $nomor = 1;
                 <td><?php echo $siswa['nama'] ?></td>
                 <td><?php echo $siswa['kelas'] ?></td>
                 <td><?php echo $siswa['jurusan'] ?></td>
+                <td>
+                      <a href="editSiswa.php?id=<?php echo $siswa['id'] ?>" class="action-btn edit" >
+                           edit
+                        </a>    
+                         <a href="hapusSiswa.php?id=<?php echo $siswa['id'] ?>" class="action-btn delete" >
+                            hapus
+                        </a>
+                </td>
             </tr>
             <?php } ?>
         </tbody>
