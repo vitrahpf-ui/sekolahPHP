@@ -1,12 +1,12 @@
 <?php
-$host     = "localhost";
-$user     = "root";     
-$password = "";         
-$database = "sekolah";
 
-$koneksi = mysqli_connect($host, $user, $password, $database);
+// host = xampp itu hostnya localhost
+// user = root
+// password = kosong
+// database = sekolah
 
-if (!$koneksi) {
-    die("Koneksi gagal: " . mysqli_connect_error());
-}
+$db = mysqli_connect('localhost', 'root', '', 'sekolah');
+
+// $db = buat koneksiin antara php dengan database mysql, yaitu database sekolah
+
 ?>

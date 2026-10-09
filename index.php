@@ -1,13 +1,11 @@
 <?php
-include 'koneksi.php';
 
-$query = mysqli_query($koneksi, "SELECT * FROM siswa");
+include_once "koneksi.php";
+// include once buat manggil file koneksi.php biar bisa konek ke database
 
+$query = mysqli_query($db, "SELECT * FROM siswa");
+$nomor = 1;
 
-$data_siswa = [];
-while ($row = mysqli_fetch_assoc($query)) {
-    $data_siswa[] = $row;
-}
 ?>
 
 <!DOCTYPE html>
@@ -67,23 +65,16 @@ while ($row = mysqli_fetch_assoc($query)) {
                 <th>Jurusan</th>
             </tr>
         </thead>
-        <tbody>
-            <?php if (!empty($data_siswa)): ?>
-                <?php $no = 1; ?>
-                <?php foreach ($data_siswa as $siswa): ?>
-                    <tr>
-                        <td><?= $no++; ?></td>
-                        <td><?= htmlspecialchars($siswa['nis']); ?></td>
-                        <td><?= htmlspecialchars($siswa['nama']); ?></td>
-                        <td><?= htmlspecialchars($siswa['kelas']); ?></td>
-                        <td><?= htmlspecialchars($siswa['jurusan']); ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <tr>
-                    <td colspan="5" style="text-align: center;">Tidak ada data siswa.</td>
-                </tr>
-            <?php endif; ?>
+        <tbody id="siswaTableBody">
+            <?php foreach ($query as $siswa) { ?>
+            <tr>
+                <td><?php echo $nomor++ ?></td>
+                <td><?php echo $siswa['nis'] ?></td>
+                <td><?php echo $siswa['nama'] ?></td>
+                <td><?php echo $siswa['kelas'] ?></td>
+                <td><?php echo $siswa['jurusan'] ?></td>
+            </tr>
+            <?php } ?>
         </tbody>
     </table>
 
