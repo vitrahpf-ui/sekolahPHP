@@ -1,7 +1,7 @@
 <?php
 
 include_once "koneksi.php";
-// include once buat manggil file koneksi.php biar bisa konek ke database
+
 
 $query = mysqli_query($db, "SELECT * FROM siswa");
 $nomor = 1;
@@ -49,12 +49,35 @@ $nomor = 1;
         tr:hover {
             background-color: #e9ecef;
         }
+        a {
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            color: white;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 10px;
+            background-color: lightcoral;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all .5s;
+        }
+        .btn:hover {
+            background-color: lightblue;
+            transform: translateY(-5px);
+        }
+        .tambah {
+        margin-left: 120px;
+        }
+
     </style>
 </head>
 <body>
 
     <h2>Daftar Siswa Sekolah</h2>
-     <a href="tambahSiswa.php" class="add-btn"><i class="fa fa-plus"></i> Tambah siswa</a>
+     <button class="btn tambah"><a href="tambahSiswa.php" class="add-btn"><i class="fa fa-plus"></i> Tambah siswa</a></button>
 
     <table>
         <thead>
@@ -76,12 +99,14 @@ $nomor = 1;
                 <td><?php echo $siswa['kelas'] ?></td>
                 <td><?php echo $siswa['jurusan'] ?></td>
                 <td>
-                      <a href="editSiswa.php?id=<?php echo $siswa['id'] ?>" class="action-btn edit" >
+                      <button class="btn edit"><a href="editSiswa.php?id=<?php echo $siswa['id'] ?>" class="action-btn edit" >
                            edit
-                        </a>    
-                         <a href="hapusSiswa.php?id=<?php echo $siswa['id'] ?>" class="action-btn delete" >
-                            hapus
-                        </a>
+                        </a>  </button>  
+                      <button class="btn hapus"><a href="hapusSiswa.php?id=<?= $siswa['id']; ?>" 
+                       onclick="return confirm('palpaplepapefaieh hapus?')">
+                       hapus
+                    </a>
+                    </button> 
                 </td>
             </tr>
             <?php } ?>
